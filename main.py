@@ -19,22 +19,36 @@ class Window(QMainWindow):
         self.pgup = QShortcut(QKeySequence("PgUp"), self).activated.connect(self.uppp)
         self.pgdn = QShortcut(QKeySequence("PgDown"), self).activated.connect(self.downnn)
         self.down = QShortcut(QKeySequence("Down"), self).activated.connect(self.down)
-        self.left = QShortcut(QKeySequence("Left"), self).activated.connect(self.left)
+        self.left = QShortcut(QKeySequence("Left"), self).activated.connect(self.leftr)
         self.pgup = QShortcut(QKeySequence("Right"), self).activated.connect(self.right)
         self.pgup = QShortcut(QKeySequence("Up"), self).activated.connect(self.up)
 
         self.refresh_map()
         self.show()
 
+
+    def up(self):
+        self.map_ll[1] = str(int(self.map_ll[1]) + 1)
+        self.refresh_map()
+
+    def right(self):
+        self.map_ll[0] = str(int(self.map_ll[0]) + 1)
+        self.refresh_map()
+
+    def leftr(self):
+        self.map_ll[0] = str(int(self.map_ll[0]) - 1)
+        self.refresh_map()
+
     def down(self):
-        pass
+        self.map_ll[1] = str(int(self.map_ll[1]) - 1)
+        self.refresh_map()
 
     def uppp(self):
-        self.map_l += 1
+        self.map_zoom += 0.15
         self.refresh_map()
 
     def downnn(self):
-        self.map_l -= 1
+        self.map_zoom -= 0.15
         self.refresh_map()
 
     def set_coor(self, coor):
