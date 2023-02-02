@@ -16,8 +16,8 @@ class Window(QMainWindow):
         self.map_l = 'map'
         self.url_map = 'http://static-maps.yandex.ru/1.x/'
 
-        self.pgup = QShortcut(QKeySequence("PgUp"), self).activated.connect(self.set_zoom)
-        self.pgdn = QShortcut(QKeySequence("PgDown"), self).activated.connect(self.set_zoom)
+        self.pgup = QShortcut(QKeySequence("PgUp"), self).activated.connect(self.uppp)
+        self.pgdn = QShortcut(QKeySequence("PgDown"), self).activated.connect(self.downnn)
         self.down = QShortcut(QKeySequence("Down"), self).activated.connect(self.on_open)
         self.left = QShortcut(QKeySequence("Left"), self).activated.connect(self.on_open)
         self.pgup = QShortcut(QKeySequence("Right"), self).activated.connect(self.on_open)
@@ -27,10 +27,13 @@ class Window(QMainWindow):
         self.show()
 
     def on_open(self):
-        print(7890)
+        pass
 
-    def set_zoom(self):
-        print("Opening!")
+    def uppp(self):
+        self.map_l += 1
+
+    def downnn(self):
+        self.map_l -= 1
 
     def set_coor(self, coor):
         self.map_ll = list(coor)
